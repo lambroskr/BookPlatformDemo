@@ -30,4 +30,8 @@ public class BookService {
     public List<Book> getBookByAuthor(String author) {
         return repo.findByAuthor(author);
     }
+
+    public void addBook(Book book) {
+        repo.save(book);
+    }
 }

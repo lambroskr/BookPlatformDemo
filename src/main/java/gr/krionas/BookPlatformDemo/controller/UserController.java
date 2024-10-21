@@ -23,4 +23,5 @@ public class UserController {
     public String adminPage(){
         return "Only admin can see this";
     }
+
 }
