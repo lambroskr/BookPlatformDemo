@@ -4,15 +4,15 @@ import gr.krionas.BookPlatformDemo.config.UserDetailsImplementation;
 import gr.krionas.BookPlatformDemo.model.User;
 import gr.krionas.BookPlatformDemo.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipal;
-
+/**
+ * Service class implementing Spring Security's UserDetailsService to load
+ * user-specific data during authentication.
+ */
 @Service
 public class MyUserDetailService implements UserDetailsService {
 
@@ -22,12 +22,14 @@ public class MyUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        // Fetches the user from the database
         User user = repo.findByUsername(username);
+
         if(user== null){
             throw new UsernameNotFoundException("404 User not Found.");
         }
 
-
+        // Returns an instance of UserDetailsImplementation for authentication
         return new UserDetailsImplementation(user);
     }
 }

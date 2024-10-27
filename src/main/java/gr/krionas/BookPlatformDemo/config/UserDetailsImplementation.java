@@ -13,10 +13,12 @@ public class UserDetailsImplementation implements UserDetails {
 
     private User user;
 
+    //Custom implementation of UserDetails to integrate with Spring Security.
     public UserDetailsImplementation(User user){
         this.user = user;
     }
 
+    //Returns the authorities granted to the user.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));

@@ -29,15 +29,21 @@ public class SecurityConfig {
         return provider;
     }
 
-    @Bean
+/**
+ * Configures the security filter chain, defining which endpoints
+ * require authentication, the session management policy, and CSRF settings.
+ */
+ @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
                 .csrf(customizer -> customizer.disable())
+                // Configure authorization for specific request paths
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/register").permitAll()
                         .anyRequest().authenticated())
+
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

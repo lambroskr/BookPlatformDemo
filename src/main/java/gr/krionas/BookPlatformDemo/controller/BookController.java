@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * REST controller for handling book-related operations.
+ * Provides endpoints to perform CRUD operations on books.
+ */
 @RestController
 public class BookController {
 
@@ -70,9 +74,5 @@ public class BookController {
                     .body("Error occurred while adding the book.");
         }
     }
-
-
-
-
 
 }

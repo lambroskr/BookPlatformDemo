@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for handling book-related operations.
+ * Provides methods to perform CRUD operations on books.
+ */
 @Service
 public class BookService {
 
