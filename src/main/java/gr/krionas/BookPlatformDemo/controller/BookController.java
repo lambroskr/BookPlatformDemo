@@ -41,8 +41,8 @@ public class BookController {
     }
 
     // Get book by title
-    @GetMapping("/book/title/{title}")
-    public ResponseEntity<Book> getBookByTitle(@PathVariable String title) {
+    @GetMapping("/book/")
+    public ResponseEntity<Book> getBookByTitle(@RequestParam String title) {
         Book book = service.getBookByTitle(title);
         if (book != null) {
             return ResponseEntity.ok(book);
@@ -52,8 +52,8 @@ public class BookController {
     }
 
     // Get books by author
-    @GetMapping("/book/author/{author}")
-    public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable String author) {
+    @GetMapping("/book")
+    public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String author) {
         List<Book> books = service.getBookByAuthor(author);
         if (books.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)

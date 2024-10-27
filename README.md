@@ -40,13 +40,13 @@
 
 - **Get book by title**:
   ```
-  GET /book/title/{title}
+  GET /book?title={title}
   ```
   Finds a book based on the title.
 
 - **Get books by author**:
   ```
-  GET /book/author/{author}
+  GET /books?author={author}
   ```
   Returns a list of books written by the specified author.
 
